@@ -32,6 +32,8 @@ EventBridge ──► Durable Orchestrator (Lambda Durable Function)
 | Swift Sandbox | Swift-specific sandbox with `.build` persistence | None | VPC (private) |
 | Evaluator Agent | Read-only code review, structured verdict | Claude Haiku | VPC (private) |
 
+> **Note:** The included sandbox images cover **Python** (pytest) and **Swift** (SwiftPM). The architecture is framework-agnostic — to support additional languages or frameworks (e.g. Java/Gradle, TypeScript/Jest, Go), add a new Dockerfile with the required toolchain and register it as an additional sandbox runtime in the CDK stack.
+
 ## Key features
 
 - **Zero-cost suspension** — Durable Function suspends at `wait_for_callback`; no compute charges while the coding agent works asynchronously
