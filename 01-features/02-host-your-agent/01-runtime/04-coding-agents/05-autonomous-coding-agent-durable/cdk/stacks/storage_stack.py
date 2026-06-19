@@ -187,7 +187,7 @@ class StorageStack(cdk.Stack):
                     "events:DeleteRule", "events:DisableRule", "events:EnableRule",
                     "events:PutRule", "events:PutTargets", "events:RemoveTargets",
                 ],
-                resources=[f"arn:aws:events:*:*:rule/DO-NOT-DELETE-S3-Files*"],
+                resources=["arn:aws:events:*:*:rule/DO-NOT-DELETE-S3-Files*"],
                 conditions={
                     "StringEquals": {"events:ManagedBy": "elasticfilesystem.amazonaws.com"}
                 },

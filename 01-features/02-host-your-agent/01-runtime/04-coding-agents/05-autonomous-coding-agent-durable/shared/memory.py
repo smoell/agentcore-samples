@@ -76,7 +76,7 @@ def remember(repo: str, lessons: list[str]) -> int:
 
     Never raises — on error returns 0.
     """
-    clean = [l.strip() for l in lessons if l and l.strip()]
+    clean = [lesson.strip() for lesson in lessons if lesson and lesson.strip()]
     if not MEMORY_ID or not clean:
         return 0
     ns = _namespace(repo)
@@ -103,7 +103,7 @@ def format_for_prompt(lessons: list[str]) -> str:
     """Render recalled lessons as a prompt block, or empty string if none."""
     if not lessons:
         return ""
-    bullets = "\n".join(f"- {l}" for l in lessons)
+    bullets = "\n".join(f"- {lesson}" for lesson in lessons)
     return (
         "\n<lessons_learned>\n"
         "From previous work on THIS repository (apply them to avoid repeating mistakes "

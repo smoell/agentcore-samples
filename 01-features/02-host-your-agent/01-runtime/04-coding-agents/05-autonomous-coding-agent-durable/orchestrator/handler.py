@@ -367,7 +367,7 @@ def handler(event: dict, context: DurableContext) -> dict:
         # Persist the REVIEW AGENT's durable, repo-level lessons (high-signal, reusable by a
         # future ticket on this repo) — not ticket-specific issues or templated completion text.
         if repo and passed:
-            lessons = [l for l in review.get("lessons", []) if isinstance(l, str) and l.strip()]
+            lessons = [lesson for lesson in review.get("lessons", []) if isinstance(lesson, str) and lesson.strip()]
             written = mem.remember(repo, lessons)
         _notify(tid, passed, f"attempts={attempts}, review={review.get('verdict','n/a')}, "
                              f"exit={last_test.get('exit_code')}")

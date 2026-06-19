@@ -407,7 +407,8 @@ def _hydrate(args: dict, tdir: str) -> dict:
 
     # Shallow-clone into a scratch dir, then move contents into the ticket dir and drop .git
     # (we want the source tree, not the upstream history — the agent works on a clean copy).
-    import tempfile, shutil
+    import tempfile
+    import shutil
     scratch = tempfile.mkdtemp(prefix="hydrate-")
     clone_dir = os.path.join(scratch, "repo")
     try:
