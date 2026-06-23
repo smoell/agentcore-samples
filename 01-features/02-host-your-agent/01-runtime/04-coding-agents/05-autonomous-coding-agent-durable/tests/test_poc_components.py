@@ -86,7 +86,7 @@ class TestMemoryHelper:
 class TestSwiftToolchain:
     def _sandbox(self, monkeypatch, lang):
         monkeypatch.setenv("SANDBOX_LANG", lang)
-        monkeypatch.setenv("WORKSPACE_PATH", "/tmp/ws")
+        monkeypatch.setenv("WORKSPACE_PATH", "/tmp/ws")  # nosec B108 — test fixture
         import sandbox.app as app
         importlib.reload(app)
         return app

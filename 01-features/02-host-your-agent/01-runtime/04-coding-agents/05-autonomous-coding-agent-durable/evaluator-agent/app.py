@@ -68,7 +68,7 @@ def _stream(kind: str, text: str):
 def _bedrock_env() -> dict:
     model = os.environ.get("BEDROCK_MODEL", "global.anthropic.claude-opus-4-8")
     region = os.environ.get("AWS_REGION", "us-east-1")
-    home = os.environ.get("HOME") or "/tmp/evalhome"
+    home = os.environ.get("HOME") or "/tmp/evalhome"  # nosec B108 — isolated container, /tmp not shared
     os.makedirs(os.path.join(home, ".claude"), exist_ok=True)
     return {
         "CLAUDE_CODE_USE_BEDROCK": "1",

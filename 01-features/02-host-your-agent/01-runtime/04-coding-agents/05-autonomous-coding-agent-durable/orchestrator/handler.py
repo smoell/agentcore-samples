@@ -184,7 +184,7 @@ def _gate_command(runtime: str, ticket: str) -> str:
     tickets (which already run on separate microVMs / sessions) can never collide.
     Mirrors the agent's own toolchain (sandbox _toolchain_env redirects SwiftPM too)."""
     if runtime == "swift":
-        scratch = f"/tmp/spmbuild_{ticket}"
+        scratch = f"/tmp/spmbuild_{ticket}"  # nosec B108 — microVM-local scratch to avoid NFS locking
         return (f'/bin/bash -c "cd /mnt/shared/{ticket} && '
                 f'swift test --enable-test-discovery --scratch-path {scratch} 2>&1"')
     return f'/bin/bash -c "cd /mnt/shared/{ticket} && python -m pytest -q 2>&1"'

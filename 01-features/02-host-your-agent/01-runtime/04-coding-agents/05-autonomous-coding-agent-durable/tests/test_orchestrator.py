@@ -74,7 +74,7 @@ class TestGateCommand:
         cmd = handler_mod._gate_command("swift", "RAINBOW-1")
         assert "--scratch-path" in cmd
         scratch = cmd.split("--scratch-path", 1)[1].split()[0]
-        assert scratch.startswith("/tmp/")        # microVM-local, NOT the shared mount
+        assert scratch.startswith("/tmp/")  # nosec B108  # microVM-local, NOT the shared mount
         assert not scratch.startswith("/mnt/")
 
     def test_swift_gate_scratch_is_per_ticket(self, handler_mod):

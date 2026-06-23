@@ -142,7 +142,7 @@ class TestValidatePathWithinBase:
         inner_dir = os.path.join(tmp_base, "inner")
         os.makedirs(inner_dir)
         link1 = os.path.join(inner_dir, "link1")
-        os.symlink("/tmp", link1)
+        os.symlink("/tmp", link1)  # nosec B108 — security test verifying symlink escape is blocked
         with pytest.raises(ValidationError, match="escapes base"):
             validate_path_within_base("inner/link1/escape", tmp_base)
 

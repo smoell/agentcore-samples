@@ -5,6 +5,7 @@
 #
 # Security: non-root execution (via entrypoint), pinned Python deps, HEALTHCHECK.
 FROM --platform=linux/arm64 swift:6.1-jammy
+#checkov:skip=CKV_DOCKER_3:Non-root execution handled by entrypoint.sh via su
 
 WORKDIR /app
 

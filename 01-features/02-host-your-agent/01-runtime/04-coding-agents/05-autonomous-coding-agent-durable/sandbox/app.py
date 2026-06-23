@@ -283,7 +283,7 @@ def _run_command(args: dict, tdir: str) -> dict:
     try:
         try:
             proc = subprocess.Popen(
-                argv, shell=popen_shell, cwd=popen_cwd, env=env,
+                argv, shell=popen_shell, cwd=popen_cwd, env=env,  # nosec B602 — sandboxed executor by design
                 stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             )
         except FileNotFoundError:
